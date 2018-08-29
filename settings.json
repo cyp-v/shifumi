@@ -1,0 +1,7 @@
+{
+    "galaxy.meteor.com": {
+        "env": {
+            "MONGO_URL": "mongodb://admin:npoblink182@ds135952.mlab.com:35952/shifumi"
+        }
+    }
+}

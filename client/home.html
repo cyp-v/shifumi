@@ -43,7 +43,6 @@
                 <ul>
                 {{ #each availableUsers }}
                     {{ #if isAvailable this }}
-                        {{this.challenges}}
                         <li>
                             <img src="{{avatar.curValue}}" alt="avatar de {{username}}" width="50px"> {{username}} {{status}} {{victories}} victoires 
                             {{ #if userIsAvailable}}
