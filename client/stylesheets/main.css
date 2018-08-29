@@ -1,0 +1,11 @@
+html, body, #__blaze-root{
+    height: 100%;
+    position: relative;
+    margin: 0!important;
+    padding: 0!important;
+    font-family: sans-serif;
+}
+main{
+    min-width: 300px;
+    margin: 20px;
+}

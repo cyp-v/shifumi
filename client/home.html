@@ -1,0 +1,69 @@
+<template name="home">
+
+    <header>
+        <h1>Shifumi Tournament</h1>
+        <nav>
+            <a href="http://www.cyprienvallette.com">cyprienvallette.com</a>
+            <a id="logout" href="">Se déconnecter</a>
+            <a id="deleteAccount" href="">Supprimer mon compte</a>
+            <span>{{currentUser.username}}</span>
+            <img id="userPicture" src="{{currentUser.avatar.curValue}}" alt="avatar de {{username}}" width="100px">
+        </nav>
+    </header>
+    <main id="homeContainer">
+        <section>
+            <h2>Défis en attente</h2>
+            {{ #if challenges.count }}
+                <ul>
+                    {{ #each challenges }}
+                            <li>
+                                {{ #with getUserById challenger.id}}
+                                    <img src="{{avatar.curValue}}" alt="avatar de {{username}}" width="50px"> {{username}} VS
+                                {{ /with }}
+                                {{ #with getUserById challengee.id}}
+                                    <img src="{{avatar.curValue}}" alt="avatar de {{username}}" width="50px"> {{username}}
+                                {{ /with }}
+                                {{ #if isReady _id }}
+                                    <button class="play" roomid="{{_id}}">Jouer</button>
+                                {{ /if }}
+                                {{ #if isOn _id }}
+                                    <button class="join" roomid="{{_id}}">Rejoindre</button>
+                                {{ /if }}
+                                <button class="cancel" roomid="{{_id}}">Annuler</button>
+                            </li>
+                    {{ /each }}
+                </ul>
+            {{ else }}
+                <p>Vous n'avez pas de défi en attente</p>
+            {{ /if }}
+        </section>
+        <section>
+            <h2>Joueurs disponibles</h2>
+            {{ #if availableUsers.count }}
+                <ul>
+                {{ #each availableUsers }}
+                    {{ #if isAvailable this }}
+                        {{this.challenges}}
+                        <li>
+                            <img src="{{avatar.curValue}}" alt="avatar de {{username}}" width="50px"> {{username}} {{status}} {{victories}} victoires 
+                            {{ #if userIsAvailable}}
+                                <button class="challenge" challengeeid="{{_id}}">Défier</button>
+                            {{ /if }}
+                        </li>
+                    {{ /if }}
+                {{ /each }}
+                </ul>
+            {{ else }}
+                <p>Aucun joueur n'est connecté pour le moment</p>
+            {{ /if }}
+        </section>
+        <section>
+            <h2>Meilleurs joueurs</h2>
+            <ol>
+            {{ #each bestPlayers }}
+                <li>{{this.username}} {{this.victories}} victoires</li>
+            {{ /each }}
+            </ol>
+        </section>
+    </main>
+</template>

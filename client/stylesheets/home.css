@@ -1,0 +1,46 @@
+header{
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 20px;
+    padding-right: 20px;
+    justify-content: space-between;
+    vertical-align: middle;
+    background-color: lightgray;
+}
+nav{
+    display: flex;
+    flex-wrap: wrap;
+}
+h1, nav a, nav span{
+    align-self: center;
+    margin-left: 10px;
+}
+nav span{
+    font-weight: bold;
+}
+#homeContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+section{
+    margin-right: 40px;
+}
+ul{
+    list-style: none;
+    padding: 0;
+}
+ol{
+    padding: 20px;
+}
+footer{
+    position: absolute;
+    bottom: 0px;
+    padding: 20px;
+    text-align: center;
+}
+#userPicture{
+    height: 80px;
+    width: 80px;
+    margin: 10px;
+}

@@ -1,0 +1,46 @@
+<template name="game">
+    <nav>
+        <a href="/home">Retour à l'accueil</a>
+    </nav>
+    <main id="gameContainer">
+        {{ #with room }}
+            <section id="boardContainer" class="gameSection">
+                <div id="userBoard" class="player">
+                    {{ #with currentUser }}
+                        <img src="{{avatar.curValue}}" alt="avatar de {{username}}" width="100px">{{username}}
+                        <span class="score">{{ getCurrentScore _id }}</span>
+                        {{ #if getCurrentMove _id }}    
+                            <img class="miniMove" src="/images/{{ getCurrentMove _id}}.png" alt="{{ getCurrentMove _id}}" width="50px">
+                        {{ /if }}
+                    {{ /with }}
+                </div> 
+                <span class="vs">VS</span>
+                <div id="otherPlayerBoard" class="player">
+                    {{ #with otherPlayer room }}
+                        <img src="{{avatar.curValue}}" alt="avatar de {{username}}" width="100px">{{username}}
+                        <span class="score">{{ getCurrentScore _id }}</span>
+                        {{ #if getCurrentMove _id }} 
+                            {{ #if isRoundOver }}   
+                                <img class="miniMove" src="/images/{{ getCurrentMove _id}}.png" alt="{{ getCurrentMove _id}}" width="50px">
+                            {{ /if }}
+                        {{ /if }}
+                    {{ /with }}
+                </div>
+            </section>
+            <section id="messageBoard">
+                {{>boardMessage}}
+            </section>
+        {{ /with }}
+        <section id="moveOptions" class="gameSection">
+            <a id="rock" class="move" href><img src="/images/rock.png" alt="pierre" width="100px"></a>
+            <a id="paper" class="move" href><img src="/images/paper.png" alt="pierre" width="100px"></a>
+            <a id="scissors" class="move" href><img src="/images/scissors.png" alt="pierre" width="100px"></a>
+        </section>
+    </main>
+</template>
+
+<template name="boardMessage">
+    <span>
+        {{gameStateChangeListener}}
+    </span>
+</template>

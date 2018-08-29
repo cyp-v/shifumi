@@ -1,0 +1,42 @@
+nav{
+    padding: 20px;
+}
+#gameContainer{
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-around;
+}
+.gameSection{
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.player{
+    display: flex;
+    height: 150px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: baseline;
+}
+.miniMove{
+    margin: 10px;
+}
+#messageBoard{
+    display: flex;
+    min-height: 100px;
+    text-align: center;  
+    margin-top: 40px; 
+}
+#messageBoard span{
+    margin: auto;
+    font-weight: bold;
+}
+#moveOptions{
+    min-height: 200px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.move{
+    margin: 10px;
+}
